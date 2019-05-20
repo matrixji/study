@@ -1,3 +1,5 @@
+---
+# playbook for install kubernetes
 
 - hosts: all
   roles:
@@ -5,4 +7,5 @@
 
 - hosts: master
   roles:
+  - role: common
   - role: master

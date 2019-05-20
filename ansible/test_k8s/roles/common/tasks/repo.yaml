@@ -1,0 +1,21 @@
+---
+# configure all used yum repo for all common nodes
+
+- name: Add kubernetes repo mirror (aliyun)
+  yum_repository:
+    name: kubernetes
+    description: kubernetes
+    baseurl: https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/
+    gpgkey:
+      - https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
+      - https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+
+- stat:
+    path: /etc/yum.repos.d/docker-ce.repo
+  register: docker_ce_repo
+  ignore_errors: True
+
+- name: Add Docker CE repo
+  shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  when: not docker_ce_repo.stat.exists
+
