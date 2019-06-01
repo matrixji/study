@@ -5,7 +5,12 @@
   yum:
     name:
       - epel-release
-    state: installed
+    state: latest
+
+- name: Upgrade all packages
+  yum:
+    name: "*"
+    state: latest
 
 - name: Remove rpms may conflict
   yum:
@@ -21,4 +26,5 @@
   yum:
     name:
       - docker-ce
-    state: installed
+      - kubelet
+    state: latest
