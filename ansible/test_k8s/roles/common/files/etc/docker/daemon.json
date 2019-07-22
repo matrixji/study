@@ -1,5 +1,1 @@
-{
-    "exec-opts": [
-        "native.cgroupdriver=systemd"
-    ]
-}
+{}

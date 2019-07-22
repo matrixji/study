@@ -10,6 +10,14 @@
       - https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
       - https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
 
+- name: Install epel-release and yum-utils
+  yum:
+    name:
+      - epel-release
+      - yum-utils
+    state: installed
+    update_cache: true
+
 - stat:
     path: /etc/yum.repos.d/docker-ce.repo
   register: docker_ce_repo

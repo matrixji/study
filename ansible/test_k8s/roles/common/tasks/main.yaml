@@ -1,17 +1,21 @@
+---
+- name: prepare
+  include: prepare.yaml
+
 - name: configure repo
   include: repo.yaml
 
 - name: install software
   include: yum.yaml
 
-- name: configure docker
-  copy:
-    src: etc/docker/daemon.json
-    dest: /etc/docker/daemon.json
-  notify: restart docker
+# - name: configure docker
+#   copy:
+#     src: etc/docker/daemon.json
+#     dest: /etc/docker/daemon.json
+#   notify: restart docker
 
-- name: start docker
-  service:
-    name: docker
-    state: started
-    enabled: yes
+# - name: start docker
+#   service:
+#     name: docker
+#     state: started
+#     enabled: yes

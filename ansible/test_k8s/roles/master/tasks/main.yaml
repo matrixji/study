@@ -1,0 +1,6 @@
+---
+- name: xxx
+  yum:
+    name:
+      - kubectl
+    state: installed

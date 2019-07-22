@@ -1,12 +1,6 @@
 ---
 # install software
 
-- name: Install epel-release
-  yum:
-    name:
-      - epel-release
-    state: latest
-
 - name: Upgrade all packages
   yum:
     name: "*"
@@ -15,16 +9,13 @@
 - name: Remove rpms may conflict
   yum:
     name:
-      - docker
-      - docker-cli
-      - docker-client
-      - docker-engine
-      - docker-common
+      - docker-ce
+      - docker-ce-cli
     state: removed
 
-- name: Install software
+- name: Install all software
   yum:
     name:
-      - docker-ce
+      - docker
       - kubelet
-    state: latest
+    state: installed
